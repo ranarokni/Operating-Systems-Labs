@@ -13,7 +13,7 @@ bounded buffer is full. There are 1 producer and 5 consumers.
 
 * [Many producers and many consumers:](ProducerConsumer/2_3producer_5consumer.py)This is a program in which the producer will produce items till the bounded buffer is full. Initialization is empty. There are 3 producers and 5 consumers)
 
-* [Deadlock situation:](ProducerConsumer/deadlock.py) There is a deadlock situation when the consumer is waiting for the producer to produce something but it won't.
+* [Deadlock situation:](ProducerConsumer/3_deadlock.py) There is a deadlock situation when the consumer is waiting for the producer to produce something but it won't.
 
 
 ## P1 P2 Problem
