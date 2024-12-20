@@ -19,16 +19,16 @@ full = threading.Semaphore(0)
 mutex = threading.Semaphore(1)
 
 
-def producer():
+def producer(producer_id):
     while len(buffer) <= buffer_size:
         item = random.randint(1, 100)
         empty.acquire()  
         mutex.acquire()
         buffer.append(item)
-        print(f"Producer produced: {item}")
+        print(f"Producer {producer_id} produced: {item}")
         mutex.release()
         full.release()  
-        time.sleep(1)  
+        time.sleep(3)  
         
         
 def consumer(consumer_id):
@@ -44,14 +44,20 @@ def consumer(consumer_id):
         time.sleep(5)         
         
         
-producer_thread = [threading.Thread(target=producer, args=(i,)) for i in range(3)]
+producer_threads = [threading.Thread(target=producer, args=(i,)) for i in range(3)]
 consumer_threads = [threading.Thread(target=consumer, args=(i,)) for i in range(5)]
 
-producer_thread.start()
+
+for thread in producer_threads:
+    thread.start()
+    
 for thread in consumer_threads:
     thread.start()
 
-producer_thread.join()
+for thread in producer_threads:
+    thread.join()
+
+
 for thread in consumer_threads:
     thread.join()
 
