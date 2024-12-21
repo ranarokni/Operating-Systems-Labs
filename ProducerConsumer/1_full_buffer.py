@@ -29,7 +29,7 @@ def producer():
         mutex.release()
         full.release()  
         
-        time.sleep(1)  
+        time.sleep(2)  
 
 def consumer(consumer_id):
     while len(buffer) > 0:

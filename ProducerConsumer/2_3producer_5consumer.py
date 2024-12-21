@@ -20,6 +20,8 @@ mutex = threading.Semaphore(1)
 
 
 def producer(producer_id):
+    print(f"Producer {producer_id} is waiting")
+    
     while len(buffer) <= buffer_size:
         item = random.randint(1, 100)
         empty.acquire()  

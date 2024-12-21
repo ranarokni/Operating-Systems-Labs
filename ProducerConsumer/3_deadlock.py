@@ -21,7 +21,7 @@ in_index = 0
 out_index = 0
 
 def producer():
-    global in_index, out_index, items_produced, items_consumed
+    global in_index, out_index
     
     items_produced = 0
     counter = 0
@@ -43,7 +43,7 @@ def producer():
     
     
 def consumer(consumer_id):
-    global in_index, out_index, items_produced, items_consumed
+    global in_index, out_index
     
     items_consumed = 0
     couter = 0

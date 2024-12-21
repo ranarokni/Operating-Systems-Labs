@@ -23,6 +23,7 @@ mutex = threading.Semaphore(1)
 
 def producer():
     while len(buffer) <= buffer_size:
+        print('Producer is waiting')
         item = random.randint(1, 150)
         
         empty.acquire()  
@@ -37,7 +38,9 @@ def producer():
 
 def consumer(consumer_id):
     
-    while len(buffer) > 0:
+    while len(buffer) <= buffer_size and len(buffer) >= 0:
+        print(f"Consumer {consumer_id} is waiting")
+
         full.acquire()  
         mutex.acquire()
         

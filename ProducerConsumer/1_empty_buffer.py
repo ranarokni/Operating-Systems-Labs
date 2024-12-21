@@ -6,6 +6,14 @@
 # There are 1 producer and 5 consumers
 
 
+# todo: implement bussy wait for both producer and consumer
+# todo: write the document
+# 
+
+
+
+
+
 import threading
 import time
 import random
@@ -24,6 +32,7 @@ mutex = threading.Semaphore(1)
 
 def producer():
     while len(buffer) <= buffer_size:
+        print('Producer is waiting')
         item = random.randint(1, 100)
         
         empty.acquire()  
@@ -39,7 +48,7 @@ def producer():
 def consumer(consumer_id):
     print(f'Consumer {consumer_id} is waiting')
     
-    while len(buffer) > 0:
+    while len(buffer) <= buffer_size and len(buffer) >= 0:
         full.acquire()  
         mutex.acquire()
         
