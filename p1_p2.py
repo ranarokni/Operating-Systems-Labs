@@ -17,6 +17,7 @@ def p1(p1_id):
     sequence_semaphore.release()  # allow p2 to run
 
 def p2(p2_id):
+    print(f"P2 {p2_id} is waiting for p1 to be run")
     sequence_semaphore.acquire()  # wait for p1 to finish
     print(f"P2 {p2_id} is running")
 
@@ -66,6 +67,9 @@ for i in range(5):
     all_threads.append(threading.Thread(target=p2, args=(i,)))
     
 random.shuffle(all_threads)
+
+for thread in all_threads:
+    print(f"Thread ID: {id(thread)}, Name: {thread.name}")
 
 for thread in all_threads:
     thread.start()
