@@ -6,12 +6,7 @@
 # There are 1 producer and 5 consumers
 
 
-# todo: implement bussy wait for both producer and consumer
 # todo: write the document
-# 
-
-
-
 
 
 import threading
